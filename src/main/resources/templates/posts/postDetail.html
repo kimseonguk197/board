@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>내용</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body{
+            margin-bottom:60px;
+        }
+
+        body > .container{
+            padding:60px 15px 0;
+            width: 180px;
+            font-size: 1.5em;
+            font-family: sans-serif;
+        }
+        .center{
+            width: 180px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="page-header">
+        <h1>글내용</h1>
+    </div>
+    <div class="page center">
+        <tr>
+            <td>제목</td>
+            <br>
+            <td th:text="${post.title}"></td>
+            </td>
+            <br>
+        </tr>
+        <br>
+        <tr>
+            <td>내용</td>
+            <br>
+            <textarea th:value="${post.contents}" th:text="${post.contents}" cols="30" rows="5"></textarea>
+            <br>
+        </tr>
+        <br>
+        <tr>
+            <td>작성자email</td>
+            <br>
+            <td th:text="${post.email}"></td>
+            <br>
+        </tr>
+        <br>
+        <tr>
+            <td>작성일</td>
+            <br>
+            <td th:text="${post.createDate}"></td>
+            <br>
+        </tr>
+
+    </div>
+</div>
+</body>
+</html>

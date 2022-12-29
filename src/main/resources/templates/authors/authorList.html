@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Board</title>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    body{
+      margin-bottom:60px;
+    }
+    body > .container{
+      padding:60px 15px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1>회원 목록</h1>
+    </div>
+    <div class="pull-right" style="width:100px;">
+      <a href="/" class="btn btn-primary btn-block">로그인</a>
+    </div>
+    <div class="pull-right" style="width:100px;">
+      <a href="/authors/new" class="btn btn-primary btn-block">회원가입</a>
+    </div>
+    <br/><br/><br/>
+
+    <div id="mainHide">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th class="col-md-2">id</th>
+          <th class="col-md-3">이름</th>
+          <th class="col-md-4">email</th>
+          <th class="col-md-4">상세보기</th>
+<!--          <th class="col-md-5">가입일</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="author : ${authors}">
+          <td th:text="${author.id}"></td>
+          <td th:text="${author.name}"></td>
+          <td th:text="${author.email}"></td>
+          <td><a th:href="@{'authors/findById?id=' + ${author.id}}">상세보기</a></td>
+<!--          <td th:text="${author.createdDate} ?-->
+<!--                      ${#temporals.format(board.createdDate,'yyyy-MM-dd HH:mm')} : ${board.createdDate}"></td>-->
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

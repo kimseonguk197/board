@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>이름</th>
+            </tr>
+            </thead>
+            <tbody>
+                <td th:text="${author.id}"></td>
+                <td th:text="${author.name}"></td>
+                <td th:text="${author.email}"></td>
+                <td th:text="${author.role}"></td>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

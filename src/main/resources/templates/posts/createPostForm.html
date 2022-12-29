@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Board</title>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    body{
+      margin-bottom:60px;
+    }
+
+    body > .container{
+      padding:60px 15px 0;
+      width: 180px;
+    }
+    .center{
+      width: 180px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1>글 작성</h1>
+    </div>
+    <form action="/posts/new" method="post">
+      <div class="page center">
+        <tr>
+          <td>제목</td>
+          <br>
+          <td><input type="text" name="title" >
+          </td>
+          <br>
+        </tr>
+
+        <tr>
+          <td>내용</td>
+          <br>
+          <td><textarea name="contents" cols="30" rows="5"></textarea></td>
+          <br>
+        </tr>
+
+        <tr>
+          <td>작성자email</td>
+          <br>
+          <td><input type="text" name="email" > </td>
+          <br>
+        </tr>
+
+        <tr text-align="center">
+          <br>
+          <td colspan="2">
+            <input type="submit" value="등록">
+          </td>
+        </tr>
+
+      </div>
+    </form>
+</div>
+</body>
+</html>

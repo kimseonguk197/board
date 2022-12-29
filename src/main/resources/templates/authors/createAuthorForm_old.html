@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>createAuthorForm</title>
+</head>
+<body>
+<div class="container">
+    <form action="/authors/new" method="post">
+        <div class="form-group">
+            <label>이름</label>
+            <input type="text" name="name" placeholder="이름을 입력하세요">
+<!--            이 밑에서부터는 advance-->
+            <label>email</label>
+            <input type="text" name="email" placeholder="email주소를 입력하세요">
+            <label>password</label>
+            <input type="text" name="password" placeholder="비밀번호를 입력하세요">
+            <p>역할</p>
+            <label><input type="radio" name="role" value="admin">admin</label>
+            <label><input type="radio" name="role" value="user">user</label>
+        </div>
+        <button type="submit">등록</button>
+    </form>
+
+</div>
+
+</body>
+</html>

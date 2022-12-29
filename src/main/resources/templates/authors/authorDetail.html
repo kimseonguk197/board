@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>회원상세정보</title>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+
+    body{
+      margin-bottom:60px;
+    }
+    body > .container{
+      padding:60px 15px 0;
+    }
+    .styled-table {
+      font-size: 1.5em;
+      font-family: sans-serif;
+      min-width: 700px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1>회원 상세 정보</h1>
+    </div>
+
+    <table class="styled-table">
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>이름</th>
+        <th>email</th>
+        <th>사용자</th>
+        <th>가입일</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td th:text="${author.id}"></td>
+          <td th:text="${author.name}"></td>
+          <td th:text="${author.email}"></td>
+          <td th:text="${author.role}"></td>
+          <td th:text="${author.createDate}"></td>
+        </tr>
+      </tbody>
+    </table>
+
+</div>
+</body>
+</html>
