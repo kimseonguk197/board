@@ -33,4 +33,8 @@ public class PostService {
     public Optional<Post> findById(Long memberId){
         return repository.findById(memberId);
     }
+
+    public Optional<Post> findByTitle(String title){
+        return repository.findByTitle(title);
+    }
 }
