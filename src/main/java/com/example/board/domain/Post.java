@@ -23,8 +23,8 @@ public class Post {
     @Column(length = 255)
     private String contents;
 
-    @ManyToOne
-    @JoinColumn(nullable = false, name="author_id", referencedColumnName="id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false, name="author_id")
     private Author author_id;
 
     @Column(length = 50)
