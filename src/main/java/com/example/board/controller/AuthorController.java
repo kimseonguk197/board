@@ -3,12 +3,18 @@ package com.example.board.controller;
 import com.example.board.domain.Author;
 import com.example.board.domain.Role;
 import com.example.board.service.AuthorService;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 
 @Controller
@@ -74,8 +80,25 @@ public class AuthorController {
     }
 
     @GetMapping("authors/findById")
-    public String findById(@RequestParam(value="id")Long id, Model model){
-        model.addAttribute("author",  authorService.findById(id).orElse(null));
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public String findById(@RequestParam(value="id")Long id, Model model) throws Exception {
+//        model.addAttribute("author",  authorService.findById(id).orElse(null));
+//        위와 같이 처리 하면 Controller단위에서 에러가 나는 것이 아닌 null을 화면으로 넘겨 화면에서 에러가 나게 되는 상황
+//        또한 Exception처리를 해주지 않고, null로만 return하면 기본 httperror메세지도 나가지 않는다.
+//        model.addAttribute("author",  authorService.findById(id).orElseThrow(Exception::new));
+//        위와 같이 기본 Exception처리만 하게 되면, 어떤 에러인지 알기가 어렵다. 또한 메서드 단위로  전부 별도로 예외처리를 해주어야함.
+//        또한 상태값도 500으로 고정된다.
+//        아래도 메시지는 개선하였으나, 상태값은 마찬가지이다.
+//        이를 위해 AOP를 적용한다.
+        try {
+            model.addAttribute("author", authorService.findById(id).orElseThrow(Exception::new));
+        }catch (Exception e){
+             throw new EntityNotFoundException("postList EntityNotFoundException " + e.getMessage());
+        }
+//        model.addAttribute("author",  (ResponseEntity<Object>::
+//                new ResponseEntity<Object>(
+//                "no entity", new HttpHeaders(), HttpStatus.NOT_FOUND));
+
 
         return "authors/authorDetail";
     }
